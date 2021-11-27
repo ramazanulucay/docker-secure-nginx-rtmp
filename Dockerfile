@@ -1,7 +1,7 @@
 ARG NGINX_VERSION=1.18.0
 ARG NGINX_RTMP_VERSION=1.2.1
 ARG FFMPEG_VERSION=4.3.1
-
+ARG VOD_MODULE_VERSION=399e1a0ecb5b0007df3a627fa8b03628fc922d5e
 
 ##############################
 # Build the NGINX-build image.
@@ -28,6 +28,9 @@ RUN apk add --update \
   pkgconfig \
   zlib-dev
 
+RUN mkdir /tmp/nginx-vod-module
+RUN curl -sL https://github.com/kaltura/nginx-vod-module/archive/${VOD_MODULE_VERSION}.tar.gz | tar -C /tmp/nginx-vod-module --strip 1 -xz
+
 # Get nginx source.
 RUN cd /tmp && \
   wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && \
@@ -48,6 +51,7 @@ RUN cd /tmp && \
 RUN cd /tmp/nginx-${NGINX_VERSION} && \
   ./configure \
   --prefix=/usr/local/nginx \
+  --add-module=/tmp/nginx-vod-module \
   --add-module=/tmp/nginx-rtmp-module-${NGINX_RTMP_VERSION} \
   --add-module=/tmp/echo-nginx-module-0.62 \
   --conf-path=/etc/nginx/nginx.conf \

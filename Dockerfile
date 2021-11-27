@@ -8,6 +8,7 @@ ARG VOD_MODULE_VERSION=399e1a0ecb5b0007df3a627fa8b03628fc922d5e
 FROM alpine:3.11 as build-nginx
 ARG NGINX_VERSION
 ARG NGINX_RTMP_VERSION
+ARG VOD_MODULE_VERSION
 
 # Build dependencies.
 RUN apk add --update \

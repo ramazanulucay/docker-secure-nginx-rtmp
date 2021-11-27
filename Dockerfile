@@ -28,9 +28,6 @@ RUN apk add --update \
   pkgconfig \
   zlib-dev
 
-RUN curl -sL  | tar -C /tmp/nginx-vod-module --strip 1 -xz
-
-
 # Get nginx source.
 RUN cd /tmp && \
   wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && \

@@ -47,14 +47,14 @@ RUN cd /tmp && \
 
 RUN cd /tmp && \
   wget https://github.com/kaltura/nginx-vod-module/archive/${VOD_MODULE_VERSION}.tar.gz && \
-  tar zxf v${VOD_MODULE_VERSION}.tar.gz && \ rm v${VOD_MODULE_VERSION}.tar.gz
+  tar zxf ${VOD_MODULE_VERSION}.tar.gz && \ rm ${VOD_MODULE_VERSION}.tar.gz
 
 
 # Compile nginx with nginx-rtmp module.
 RUN cd /tmp/nginx-${NGINX_VERSION} && \
   ./configure \
   --prefix=/usr/local/nginx \
-  --add-module=/tmp/nginx-vod-module-${VOD_MODULE_VERSION} \
+  --add-module=/tmp/nginx-vod-module \
   --add-module=/tmp/nginx-rtmp-module-${NGINX_RTMP_VERSION} \
   --add-module=/tmp/echo-nginx-module-0.62 \
   --conf-path=/etc/nginx/nginx.conf \

@@ -21,6 +21,7 @@ default settings for HLS live streaming. Built on Alpine Linux.
 * nginx-rtmp-module 1.2.1 (compiled from source)
 * ffmpeg 4.3.1 (compiled from source)
 * Default HLS settings (See: [nginx.conf](nginx.conf))
+* Kaltura's vod-module.
 
 [![Docker Stars](https://img.shields.io/docker/stars/ioexpert/secure-nginx-rtmp.svg)](https://hub.docker.com/r/ioexpert/secure-nginx-rtmp/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/ioexpert/secure-nginx-rtmp.svg)](https://hub.docker.com/r/ioexpert/secure-nginx-rtmp/)
